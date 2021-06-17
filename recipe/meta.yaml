@@ -17,14 +17,19 @@ build:
   script: "pip install . --no-deps -vv"
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.6
     - pip
     - setuptools
-
+    - wheel
   run:
-    - python
-    - google-api-core >=1.19.0,<2.0.0dev
+    - python >=3.6
+    - google-api-core >=1.21.0,<2.0.0dev
+    - google-auth >=1.24.0,<2.0.0dev
+    # Support six==1.12.0 due to App Engine standard runtime.
+    # https://github.com/googleapis/python-cloud-core/issues/45
+    - six >=1.12.0
+    - grpcio >=1.8.2,<2.0.0dev
 
 test:
   imports:
@@ -33,9 +38,14 @@ test:
     - google.cloud.environment_vars
     - google.cloud.exceptions
     - google.cloud.operation
+  requires:
+    - pip
+    - python
+  commands:
+    - python -m pip check
 
 about:
-  home: https://github.com/googleapis/google-cloud-python/tree/master/core
+  home: https://github.com/googleapis/python-cloud-core
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
@@ -43,7 +53,7 @@ about:
   description: This library is not meant to stand-alone. Instead it defines common helpers
     (e.g. base Client and Connection classes) used by all of the  google-cloud-*.
   doc_url: https://googleapis.dev/python/google-cloud-core/latest/
-  dev_url: https://github.com/googleapis/google-cloud-python/tree/master/core
+  dev_url: https://github.com/googleapis/python-cloud-core
 
 extra:
   recipe-maintainers:
