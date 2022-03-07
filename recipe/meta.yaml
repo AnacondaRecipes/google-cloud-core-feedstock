@@ -39,6 +39,9 @@ test:
     - pip
   commands:
     - python -m pip check
+  downstreams:
+    - gensim
+    - google-cloud-storage
 
 about:
   home: https://github.com/googleapis/python-cloud-core
