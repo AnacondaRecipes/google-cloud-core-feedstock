@@ -1,6 +1,6 @@
 {% set name = "google-cloud-core" %}
-{% set version = "1.7.1" %}
-{% set sha256 = "3bd1e679a3d38b9da93c5919ae56239dda91fb32a2d954b2cd830392337c1cc9" %}
+{% set version = "2.2.2" %}
+{% set sha256 = "7d19bf8868b410d0bdf5a03468a3f3f2db233c0ee86a023f4ecc2b7a4b15f736" %}
 
 package:
   name: {{ name|lower }}
@@ -14,21 +14,18 @@ source:
 build:
   number: 0
   noarch: python
-  script: "pip install . --no-deps -vv"
+  script: {{ PYTHON }} -m pip install . --no-deps -vv
 
 requirements:
   host:
-    - python >=3.6
+    - python
     - pip
     - setuptools
     - wheel
   run:
     - python >=3.6
-    - google-api-core >=1.21.0,<2.0.0dev
-    - google-auth >=1.24.0,<2.0.0dev
-    # Support six==1.12.0 due to App Engine standard runtime.
-    # https://github.com/googleapis/python-cloud-core/issues/45
-    - six >=1.12.0
+    - google-api-core >=1.21.0,<3.0.0dev
+    - google-auth >=1.24.0,<3.0.0dev
     - grpcio >=1.8.2,<2.0.0dev
 
 test:
@@ -40,9 +37,11 @@ test:
     - google.cloud.operation
   requires:
     - pip
-    - python
   commands:
     - python -m pip check
+  downstreams:
+    - gensim
+    - google-cloud-storage
 
 about:
   home: https://github.com/googleapis/python-cloud-core
