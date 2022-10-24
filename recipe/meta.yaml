@@ -48,6 +48,7 @@ about:
   license: Apache-2.0
   license_family: Apache
   license_file: LICENSE
+  license_url: https://github.com/googleapis/python-cloud-core/blob/v2.3.2/LICENSE
   summary: 'API Client library for Google Cloud: Core Helpers'
   description: This library is not meant to stand-alone. Instead it defines common helpers
     (e.g. base Client and Connection classes) used by all of the  google-cloud-*.
