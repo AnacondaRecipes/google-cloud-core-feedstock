@@ -1,9 +1,6 @@
 {% set name = "google-cloud-core" %}
 {% set version = "2.6.1" %}
 
-#  downstreams:
-#    - gensim
-#    - google-cloud-storage
 package:
   name: {{ name }}
   version: {{ version }}
@@ -37,6 +34,9 @@ requirements:
     - grpcio-status >=1.75.1,<2.0.0  # [py>=314]
 
 test:
+  downstreams:
+    - gensim
+    - google-cloud-storage
   source_files: tests
   imports:
     - google.api_core.client_info
