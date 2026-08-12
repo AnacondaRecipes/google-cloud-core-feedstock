@@ -34,9 +34,6 @@ requirements:
     - grpcio-status >=1.75.1,<2.0.0  # [py>=314]
 
 test:
-  downstreams:
-    - gensim
-    - google-cloud-storage
   source_files: tests
   imports:
     - google.api_core.client_info
